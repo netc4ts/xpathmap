@@ -1,0 +1,22 @@
+<accounts>
+  <user>
+    <username>admin</username>
+    <password>Sup3rS3cur3P4ssw0rD!</password>
+  </user>
+  <user>
+    <username>userOne</username>
+    <password>notMe4040</password>
+  </user>
+  <user>
+    <username>userTwo</username>
+    <password>AnotherPassword!</password>
+  </user>
+  <user>
+    <username>UwUser</username>
+    <password>asdfjkl();</password>
+  </user>
+  <user>
+    <username>spaced User</username>
+    <password>asdfjkl(hhhhhh;</password>
+  </user>
+</accounts>
