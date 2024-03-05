@@ -13,7 +13,7 @@ import(
   "github.com/noc4t/xpathmap/util"
 )
 
-const DEBUG = false
+const DEBUG = true
 var payloads = []string{"INVALID' or '1'='1", "INVALID' or true() and ''='"}
 
 type CmdOptions struct {
@@ -50,7 +50,7 @@ func xRequest(method string, targetUrl string, data url.Values, ignoreBadCert bo
     req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
   }
 
-  if DEBUG == true {
+  if DEBUG {
     fmt.Println("The body is: " + string(requestBody))
     fmt.Println("The url is: " + req.URL.String())
     fmt.Println("The method is: " + req.Method)
@@ -71,6 +71,9 @@ func isPageDynamic(cmdOptions CmdOptions) (bool, error) {
   util.MapDeepCopy(formDataCopy, cmdOptions.formData)
 
   response1, err := xRequest(cmdOptions.method, cmdOptions.targetUrl, cmdOptions.formData, cmdOptions.ignoreBadCert)
+  if err != nil {
+	  fmt.Println(err)
+  }
   for i, _ := range cmdOptions.formData {
     formDataCopy.Set(i, util.GenerateRandomString(10))
   }
@@ -159,7 +162,7 @@ func main() {
 
   flag.Var(&headers, "header", "Specify header for the request, can be specified multiple times")
   flag.Parse()
-  if DEBUG == true {
+  if DEBUG {
     fmt.Println(headers)
   }
 
